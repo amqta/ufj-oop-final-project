@@ -1,7 +1,5 @@
 package application;
 
-import gui.JanelaCadastrar;
-import gui.JanelaConsultar;
 import gui.JanelaMenu;
 
 public class Program {
