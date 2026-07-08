@@ -43,4 +43,9 @@ Este projeto implementa um sistema em Java, seguindo o padrão DAO, que permite 
 - Java
 - Swing (GUI)
 - Padrão DAO
-- Persistência em CSV
+- Persistência em JSON (via [Gson](https://github.com/google/gson))
+
+## Configuração do ambiente
+
+`.jar` do Gson (versão 2.10.1):
+    https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar
