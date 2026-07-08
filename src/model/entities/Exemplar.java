@@ -170,7 +170,7 @@ public class Exemplar {
                 "\nLocal de Coleta: " + dtf.format(dataColeta) +
                 "\nUF: " + UF +
                 "\nData de Coleta: " + dataColeta +
-                "\nColetor: " + coletor +
+                "\nColetor: " + coletor.getNome() +
                 "\nObservações: " + observacoes;
     }
 }
