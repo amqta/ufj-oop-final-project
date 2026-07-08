@@ -35,3 +35,4 @@ bin/
 
 # Local Data
 data/exemplares.csv
+data/exemplares.json
