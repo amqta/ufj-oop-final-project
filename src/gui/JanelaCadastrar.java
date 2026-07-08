@@ -15,6 +15,7 @@ public class JanelaCadastrar {
 
     Font fonteGrande = new Font("Arial", Font.BOLD, 28);
 
+    boolean modoEdicao = false;
 
     JFrame frameCadastro = new JFrame("Cadastro de Exemplar");
     JPanel painel = new JPanel();
@@ -65,6 +66,15 @@ public class JanelaCadastrar {
     JButton jbLimpar = new JButton("Limpar");
 
     public void abreJanela() {
+        abreJanela(null);
+    }
+
+    public void abreJanelaEdicao(Exemplar e) {
+        modoEdicao = true;
+        abreJanela(e);
+    }
+
+    private void abreJanela(Exemplar e) {
         painel.setLayout(null);
         painel.setBackground(new Color(225, 235, 250));
 
@@ -158,13 +168,34 @@ public class JanelaCadastrar {
         painel.add(jbSalvar);
         painel.add(jbLimpar);
 
+        if (modoEdicao) {
+            jtfId.setText(String.valueOf(e.getId()));
+            jtfId.setEditable(false);
+            jtfReino.setText(e.getReino());
+            jtfFilo.setText(e.getFilo());
+            jtfClasse.setText(e.getClasse());
+            jtfOrdem.setText(e.getOrdem());
+            jtfFamilia.setText(e.getFamilia());
+            jtfGenero.setText(e.getGenero());
+            jtfEspecie.setText(e.getEspecie());
+            jtfLocal.setText(e.getLocalDeColeta());
+            jtfUF.setText(e.getUF());
+            jtfData.setText(e.getDataColeta() != null ? e.getDataColeta().toString() : "");
+            jtfColetorId.setText(String.valueOf(e.getColetor().getId()));
+            jtfColetorNome.setText(e.getColetor().getNome());
+            jtfObservacoes.setText(e.getObservacoes());
+
+            frameCadastro.setTitle("Atualizar Exemplar");
+            jbSalvar.setText("Salvar Alterações");
+        }
+
         frameCadastro.add(painel);
         frameCadastro.setSize(1280, 720);
         frameCadastro.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameCadastro.setVisible(true);
 
-        jbSalvar.addActionListener(e -> salvar());
-        jbLimpar.addActionListener(e -> limpar());
+        jbSalvar.addActionListener(ev -> salvar());
+        jbLimpar.addActionListener(ev -> limpar());
 
     }
 
@@ -212,10 +243,16 @@ public class JanelaCadastrar {
                     jtfObservacoes.getText());
 
             ExemplarDao dao = DaoFactory.createExemplarDao();
-            dao.cadastroExemplar(e);
 
-            JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso!\n");
-            limpar();
+            if (modoEdicao) {
+                dao.atualizarExemplar(e);
+                JOptionPane.showMessageDialog(null, "Exemplar atualizado com sucesso!\n");
+                frameCadastro.dispose();
+            } else {
+                dao.cadastroExemplar(e);
+                JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso!\n");
+                limpar();
+            }
 
         }catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Os IDs devem ser números inteiros.\n" + e.getMessage());
