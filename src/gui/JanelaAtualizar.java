@@ -73,17 +73,13 @@ public class JanelaAtualizar {
                 JOptionPane.showMessageDialog(null, "Nenhum exemplar encontrado.\n");
             } else {
                 Exemplar exemplar = resultados.getFirst();
-                JOptionPane.showMessageDialog(null, "Exemplar encontrado: " + exemplar.getEspecie());
-
-            // TODO fazer a lógica pra abrir a janela e atualizar
-
+                JanelaCadastrar janelaCadastrar = new JanelaCadastrar();
+                janelaCadastrar.abreJanelaEdicao(exemplar);
             }
-
-            JOptionPane.showMessageDialog(null, "Exemplar de ID " + id + " atualizado.");
         }catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Insira um número inteiro válido.\nErro:" + e.getMessage());
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar exemplar:\n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao pesquisar exemplar:\n" + e.getMessage());
         }
         limpar();
     }
