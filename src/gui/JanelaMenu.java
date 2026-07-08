@@ -58,6 +58,11 @@ public class JanelaMenu extends JFrame {
             janelaAtualizar.abreJanela();
         });
 
+        btnConsultarExemplar.addActionListener(e -> {
+            JanelaConsultar janelaConsultar = new JanelaConsultar();
+            janelaConsultar.abreJanela();
+        });
+
         add(btnCadastrarExemplar);
         add(btnConsultarExemplar);
         add(btnAtualizarExemplar);
