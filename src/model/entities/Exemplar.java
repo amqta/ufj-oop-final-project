@@ -167,9 +167,9 @@ public class Exemplar {
                 "\nFamília: " + familia +
                 "\nGênero: " + genero +
                 "\nEspécie: " + especie +
-                "\nLocal de Coleta: " + dtf.format(dataColeta) +
+                "\nLocal de Coleta: " + localDeColeta +
                 "\nUF: " + UF +
-                "\nData de Coleta: " + dataColeta +
+                "\nData de Coleta: " + dtf.format(dataColeta) +
                 "\nColetor: " + coletor.getNome() +
                 "\nObservações: " + observacoes;
     }
