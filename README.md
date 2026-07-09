@@ -38,6 +38,30 @@ Este projeto implementa um sistema em Java, seguindo o padrão DAO, que permite 
 - **RF05 — Listagem Geral**: visualizar todos os exemplares cadastrados.
 - **RF05 — Interface Gráfica (GUI)**: interação via interface gráfica.
 
+## Arquitetura
+```text
+src/
+├── application/
+│   └── Program.java
+├── gui/
+│   ├── JanelaAtualizar.java
+│   ├── JanelaCadastrar.java
+│   ├── JanelaConsultar.java
+│   ├── JanelaMenu.java
+│   └── JanelaRemover.java
+└── model/
+    ├── dao/
+    │   ├── impl/
+    │   │   ├── ExemplarDaoFiles.java
+    │   │   ├── ExemplarDaoJson.java
+    │   │   └── LocalDateAdapter.java
+    │   ├── DaoFactory.java
+    │   └── ExemplarDao.java
+    └── entities/
+        ├── Coletor.java
+        └── Exemplar.java
+```
+
 ## Tecnologias:
 
 - Java
